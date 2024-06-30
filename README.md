@@ -33,9 +33,6 @@ This work was developed using the following hardware setup:
 - The commercial [Loco Positioning Deck](https://www.bitcraze.io/products/loco-positioning-deck/)
 - The [Crazyradio](https://www.bitcraze.io/products/crazyradio-2-0/) necessary to flash the drones
 
-<p align="center">
-  <img src="imgs/drone.png" alt="Your Image Description" width="50%"/>
-</p>
 
 ### Hardware modifications
 Note that minimal changes are required to adapt the hardware decks mentioned above and avoid pin conflicts.
