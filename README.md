@@ -5,7 +5,7 @@
 [![Issues][issues-shield]][issues-url]
 [![License][license-shield]][license-url]
 
-# NanoSLAM: Enabling Fully Onboard SLAM for Tiny Robots
+# Nano-C-SLAM: Ultra-Lightweight Collaborative Mapping for Robot Swarms
 
 **Authors: *Vlad Niculescu*, *Tommaso Polonelli*, *Michele Magno*, *Luca Benini*** 
 
