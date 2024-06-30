@@ -11,7 +11,7 @@
 
 Corresponding author: *Vlad Niculescu* <vladn@iis.ee.ethz.ch>  
 
-<img style="float: right;" src="imgs/banner.gif" width="100%">
+<img style="float: right;" src="imgs/cover.jpg" width="100%">
 
 ## About the Project
 This work introduces a decentralized and lightweight collaborative SLAM approach that enables mapping on virtually any robot, even those equipped with low-cost hardware, including miniaturized insect-size devices. Moreover, the proposed solution supports large swarm formations with the capability to coordinate hundreds of agents. To substantiate our claims, we have successfully implemented collaborative SLAM on centimeter-size drones weighing only 46 grams. Remarkably, we achieve results comparable to high-end state-of-the-art solutions while reducing the cost, memory, and computation requirements by two orders of magnitude. Our approach is innovative in three main aspects. First, it enables onboard infrastructure-less collaborative mapping on virtually any robotic platform with a lightweight and cost-effective solution in terms of sensing and computation. Second, we optimize  the data traffic within the swarm to support hundreds of cooperative agents using standard wireless protocols such as ultra-wideband (UWB), Bluetooth, or WiFi. Last, we implement a distributed swarm coordination policy to decrease mapping latency and enhance accuracy.
@@ -41,6 +41,8 @@ This work was developed using the following hardware setup:
 Note that minimal changes are required to adapt the hardware decks mentioned above and avoid pin conflicts.
 On the *Loco Positioning Deck*, it is necessary to move the CS pin from IO1 to IO4. [See the schematics](https://www.bitcraze.io/documentation/hardware/loco_deck/loco_deck_revd.pdf)
 On the *GAP9 Deck V2* connect the IO63 to the CF_GPIO1
+
+<img style="float: right;" src="imgs/hardware.jpg" width="100%">
 
 ## Description of the Code
 The structure of the repo is shown below. The first four folders represent the code of the system, while the last folder represents the source files of the *Quad Tof Deck V2 * PCB.
@@ -87,10 +89,11 @@ The `main.c` file manages the whole process and implements the SPI slave communi
 This guide shows you how to prepare, build and test a swarm of N drones, where N is chosen by the user. Firstly, prepare N drones that feature the hardware mentioned above. Then, connect the Crazyradio to the computer. For each drone change the address following the instructions from [here](https://www.bitcraze.io/documentation/repository/crazyflie-clients-python/master/userguides/userguide_client/). The default address of a Crazyflie drone is 0xE7E7E7E7E7. The addresses should be set so that the drone with ID 0 should have the address 0xE7E7E7E7EA, the drone with ID 1 should have the address 0xE7E7E7E7EB, and so on (increments of one).
  
  ### Flashing the STM32 onboard the Crazyflies
-1. Clone this repository:`git clone --recursive <repo_link_placeholder>`
-2. Go to `cslam-stm32-app/src/config_params.h` and set `NR_OF_DRONES` to N
-3. Go to `cslam-stm32-app/deploy.sh` and modify the file according to how many drones are used. The script is written to accommodate four drones by default
-4. Go to `cslam-stm32-app/`, turn on all drones and run `./deploy.sh`. This will flash all drones
+1. Clone this repository:`git clone --recurse-submodules git@github.com:ETH-PBL/Nano-C-SLAM.git`
+2. Move the file `changes.patch` to `crazyflie-firmware/` and run `git apply changes.patch`
+3. Go to `cslam-stm32-app/src/config_params.h` and set `NR_OF_DRONES` to N (chosen by the user)
+4. Go to `cslam-stm32-app/deploy.sh` and modify the file according to how many drones are used. The script is written to accommodate four drones by default
+5. Go to `cslam-stm32-app/`, turn on all drones and run `./deploy.sh`. This will flash all drones
 
  ### Flashing the GAP9 onboard each drone
 To compile the code, you must first install the GAP9 SDK. If you don't have access to it, you can contact [GreenWaves Technologies](https://greenwaves-technologies.com/gap9-docs/). After installing the SDK and sourcing the platform through the sourceme.sh file, you can compile and flash the code by doing the following:

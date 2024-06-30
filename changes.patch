@@ -1,0 +1,91 @@
+diff --git a/src/deck/drivers/src/locodeck.c b/src/deck/drivers/src/locodeck.c
+index a025c87c..b4acf458 100644
+--- a/src/deck/drivers/src/locodeck.c
++++ b/src/deck/drivers/src/locodeck.c
+@@ -59,7 +59,7 @@
+ #include "lpsTwrTag.h"
+ 
+ 
+-#define CS_PIN DECK_GPIO_IO1
++#define CS_PIN DECK_GPIO_IO4
+ 
+ // LOCO deck alternative IRQ and RESET pins(IO_2, IO_3) instead of default (RX1, TX1), leaving UART1 free for use
+ #ifdef CONFIG_DECK_LOCODECK_USE_ALT_PINS
+@@ -429,21 +429,21 @@ static void spiRead(dwDevice_t* dev, const void *header, size_t headerLength,
+   STATS_CNT_RATE_EVENT(&spiReadCount);
+ }
+ 
+-#if CONFIG_DECK_LOCODECK_USE_ALT_PINS
+-  void __attribute__((used)) EXTI5_Callback(void)
+-#else
+-  void __attribute__((used)) EXTI11_Callback(void)
+-#endif
+-  {
+-    portBASE_TYPE  xHigherPriorityTaskWoken = pdFALSE;
+-
+-    // Unlock interrupt handling task
+-    vTaskNotifyGiveFromISR(uwbTaskHandle, &xHigherPriorityTaskWoken);
+-
+-    if(xHigherPriorityTaskWoken) {
+-      portYIELD();
+-    }
+-  }
++// #if CONFIG_DECK_LOCODECK_USE_ALT_PINS
++//   void __attribute__((used)) EXTI5_Callback(void)
++// #else
++//   void __attribute__((used)) EXTI11_Callback(void)
++// #endif
++//   {
++//     portBASE_TYPE  xHigherPriorityTaskWoken = pdFALSE;
++
++//     // Unlock interrupt handling task
++//     vTaskNotifyGiveFromISR(uwbTaskHandle, &xHigherPriorityTaskWoken);
++
++//     if(xHigherPriorityTaskWoken) {
++//       portYIELD();
++//     }
++//   }
+ 
+ static void spiSetSpeed(dwDevice_t* dev, dwSpiSpeed_t speed)
+ {
+diff --git a/src/modules/interface/estimator/estimator_kalman.h b/src/modules/interface/estimator/estimator_kalman.h
+index 2e14631b..9be90025 100644
+--- a/src/modules/interface/estimator/estimator_kalman.h
++++ b/src/modules/interface/estimator/estimator_kalman.h
+@@ -61,6 +61,7 @@ bool estimatorKalmanTest(void);
+ void estimatorKalman(state_t *state, const stabilizerStep_t stabilizerStep);
+ 
+ void estimatorKalmanTaskInit();
++void estimatorKalmanInitToPose(float x, float y, float z, float yaw);
+ bool estimatorKalmanTaskTest();
+ 
+ void estimatorKalmanGetEstimatedPos(point_t* pos);
+diff --git a/src/modules/src/estimator/estimator_kalman.c b/src/modules/src/estimator/estimator_kalman.c
+index b7cad4d2..340c7aa5 100644
+--- a/src/modules/src/estimator/estimator_kalman.c
++++ b/src/modules/src/estimator/estimator_kalman.c
+@@ -368,6 +368,24 @@ void estimatorKalmanInit(void)
+   kalmanCoreInit(&coreData, &coreParams, nowMs);
+ }
+ 
++// CUstom defined function
++void estimatorKalmanInitToPose(float x, float y, float z, float yaw)
++{
++  axis3fSubSamplerInit(&accSubSampler, GRAVITY_MAGNITUDE);
++  axis3fSubSamplerInit(&gyroSubSampler, DEG_TO_RAD);
++
++  outlierFilterTdoaReset(&outlierFilterTdoaState);
++  outlierFilterLighthouseReset(&sweepOutlierFilterState, 0);
++
++  uint32_t nowMs = T2M(xTaskGetTickCount());
++  kalmanCoreDefaultParams(&coreParams);
++  coreParams.initialX = x;
++  coreParams.initialY = y;
++  coreParams.initialZ = z;
++  coreParams.initialYaw = yaw;
++  kalmanCoreInit(&coreData, &coreParams, nowMs);
++}
++
+ bool estimatorKalmanTest(void)
+ {
+   return isInit;
