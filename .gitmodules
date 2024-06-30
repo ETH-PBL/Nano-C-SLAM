@@ -1,0 +1,6 @@
+[submodule "crazyflie-firmware"]
+	path = crazyflie-firmware
+	url = git@github.com:bitcraze/crazyflie-firmware.git
+[submodule "uwb-software-library"]
+	path = uwb-software-library
+	url = git@github.com:vladniculescu/uwb-software-library.git

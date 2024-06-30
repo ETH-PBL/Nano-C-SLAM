@@ -1,0 +1,3 @@
+obj-y += app_main.o
+obj-y += /src/
+obj-y += /../uwb-software-library/

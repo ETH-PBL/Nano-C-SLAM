@@ -1,0 +1,3 @@
+obj-y += exploration.o
+obj-y += limit_actuation.o
+obj-y += line_detector.o

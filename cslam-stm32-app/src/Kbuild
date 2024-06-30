@@ -1,0 +1,10 @@
+obj-y += /exploration/
+obj-y += /tof-matrix/
+obj-y += /spi_comm/
+obj-y += tof_daq.o
+obj-y += scan.o
+obj-y += flight_commander.o
+obj-y += uwb_ranging.o
+obj-y += radio_comm.o
+obj-y += scan_manager.o
+obj-y += uwb_collision_det.o
