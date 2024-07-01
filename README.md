@@ -107,13 +107,13 @@ To compile the code, you must first install the GAP9 SDK. If you don't have acce
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/ETH-PBL/NanoSLAM.svg?style=flat-square
-[contributors-url]: https://github.com/ETH-PBL/NanoSLAM/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/ETH-PBL/NanoSLAM.svg?style=flat-square
-[forks-url]: https://github.com/ETH-PBL/NanoSLAM/network/members
-[stars-shield]: https://img.shields.io/github/stars/ETH-PBL/NanoSLAM.svg?style=flat-square
-[stars-url]: https://github.com/ETH-PBL/NanoSLAM/stargazers
-[issues-shield]: https://img.shields.io/github/issues/ETH-PBL/NanoSLAM.svg?style=flat-square
+[contributors-shield]: https://img.shields.io/github/contributors/ETH-PBL/Nano-C-SLAM.svg?style=flat-square
+[contributors-url]: https://github.com/ETH-PBL/Nano-C-SLAM/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/ETH-PBL/Nano-C-SLAM.svg?style=flat-square
+[forks-url]: https://github.com/ETH-PBL/Nano-C-SLAM/network/members
+[stars-shield]: https://img.shields.io/github/stars/ETH-PBL/Nano-C-SLAM.svg?style=flat-square
+[stars-url]: https://github.com/ETH-PBL/Nano-C-SLAM/stargazers
+[issues-shield]: https://img.shields.io/github/issues/ETH-PBL/Nano-C-SLAM.svg?style=flat-square
 [issues-url]: https://github.com/ETH-PBL/NanoSLAM/issues
 [license-shield]: https://img.shields.io/github/license/ETH-PBL/NanoSLAM.svg?style=flat-square
 [license-url]: https://github.com/ETH-PBL/NanoSLAM/blob/master/LICENSE
