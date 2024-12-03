@@ -37,7 +37,7 @@ This work was developed using the following hardware setup:
 ### Hardware modifications
 Note that minimal changes are required to adapt the hardware decks mentioned above and avoid pin conflicts.
 On the *Loco Positioning Deck*, it is necessary to move the CS pin from IO1 to IO4. [See the schematics](https://www.bitcraze.io/documentation/hardware/loco_deck/loco_deck_revd.pdf)
-On the *GAP9 Deck V2* connect the IO63 to the CF_GPIO1
+On the *GAP9 Deck V2* connect the IO63 to the CF_GPIO2
 
 <img style="float: right;" src="imgs/hardware.jpg" width="100%">
 
