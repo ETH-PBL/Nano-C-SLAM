@@ -5,7 +5,7 @@
 [![Issues][issues-shield]][issues-url]
 [![License][license-shield]][license-url]
 
-# Nano-C-SLAM: Ultra-Lightweight Collaborative Mapping for Robot Swarms
+# Ultra-Lightweight Collaborative SLAM for Robot Swarms
 
 **Authors: *Vlad Niculescu*, *Tommaso Polonelli*, *Michele Magno*, *Luca Benini*** 
 
@@ -21,7 +21,17 @@ Our video briefly explains how our system works and showcases **Nano-C-SLAM** op
 
 ## Publications
 If you use **Nano-C-SLAM** in an academic or industrial context, please cite the following publication:
-* *To be added later*
+* *Ultra-Lightweight Collaborative SLAM for Robot Swarms* [IEEE Access](https://ieeexplore.ieee.org/document/11016752)
+
+```bibtex
+@article{niculescu2025ultra,
+  title={Ultra-Lightweight Collaborative SLAM for Robot Swarms},
+  author={Niculescu, Vlad and Polonelli, Tommaso and Magno, Michele and Benini, Luca},
+  journal={IEEE Access},
+  year={2025},
+  publisher={IEEE}
+}
+```
 
 ## Getting Started
 
